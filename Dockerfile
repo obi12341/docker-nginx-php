@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
 	php5-mysqlnd \
 	php5-cli \
 	supervisor \
-	git
+	git \
+	&& apt-get clean
 
 ##Clean Up
 RUN rm -rf /etc/nginx/sites-enabled/*
