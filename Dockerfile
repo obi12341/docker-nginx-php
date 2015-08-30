@@ -11,12 +11,16 @@ RUN apt-get update && apt-get install -y \
 	php5-cli \
 	supervisor \
 	git \
+	curl \
 	&& apt-get clean
 
-##Clean Up
+## Putting everything in place
 RUN rm -rf /etc/nginx/sites-enabled/*
 RUN mkdir -p /var/www/html
 RUN chown www-data:www-data /var/www/html
+
+## Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
 
 COPY assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY assets/nginx/nginx.conf /etc/nginx/nginx.conf
