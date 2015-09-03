@@ -17,9 +17,9 @@ RUN apt-get update && apt-get install -y \
 	supervisor \
 	git \
 	wget \
-	mysql-client \
 	nano \
 	curl \
+	mysql-client \
 	&& apt-get clean
 
 ## Putting everything in place
