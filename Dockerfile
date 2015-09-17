@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y \
 	nano \
 	curl \
 	mysql-client \
+	graphicsmagick \
+	imagemagick \
 	&& apt-get clean
 
 ## Putting everything in place
