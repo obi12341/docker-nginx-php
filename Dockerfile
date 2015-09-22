@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
 	mysql-client \
 	graphicsmagick \
 	imagemagick \
-	&& apt-get clean
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 ## Putting everything in place
 RUN rm -rf /etc/nginx/sites-enabled/* \
