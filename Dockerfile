@@ -38,6 +38,8 @@ COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 
 COPY assets/php.ini /etc/php5/fpm/php.ini
 
+VOLUME ["/var/www/html", "/var/logs/"]
+
 EXPOSE 80
 
 CMD ["/usr/bin/supervisord"]
