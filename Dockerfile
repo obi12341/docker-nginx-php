@@ -14,19 +14,22 @@ RUN apt-get update && apt-get install -y \
 	php5-memcache \
 	php5-cli \
 	php5-apcu \
+	php5-redis \
 	supervisor \
 	git \
 	wget \
 	nano \
 	curl \
 	mysql-client \
+	graphicsmagick \
+	imagemagick \
 	&& apt-get clean
 
 ## Putting everything in place
-RUN rm -rf /etc/nginx/sites-enabled/*
-RUN mkdir -p /var/www/html
-RUN mkdir -p /var/www/.ssh
-RUN chown -R www-data:www-data /var/www
+RUN rm -rf /etc/nginx/sites-enabled/* \
+	&& mkdir -p /var/www/html \
+	&& mkdir -p /var/www/.ssh \
+	&& chown -R www-data:www-data /var/www
 
 ## Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
