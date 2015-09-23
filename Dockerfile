@@ -41,6 +41,7 @@ COPY assets/nginx/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 
 COPY assets/php.ini /etc/php5/fpm/php.ini
+COPY assets/php-cli.ini /etc/php5/cli/php.ini
 
 EXPOSE 80
 
