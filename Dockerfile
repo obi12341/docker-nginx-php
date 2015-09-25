@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& mkdir -p /var/www/html \
 	&& mkdir -p /var/www/.ssh \
+	&& mkdir -p /var/www/.composer \
 	&& chown -R www-data:www-data /var/www
 
 ## Composer
