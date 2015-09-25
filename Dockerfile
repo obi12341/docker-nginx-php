@@ -3,7 +3,7 @@ MAINTAINER Patrick Oberdorf <patrick@oberdorf.net>
 
 ENV TERM linux
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
 	nginx \
 	php5-fpm \
 	php5-curl \
