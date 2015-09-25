@@ -3,7 +3,7 @@ MAINTAINER Patrick Oberdorf <patrick@oberdorf.net>
 
 ENV TERM linux
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
 	nginx \
 	php5-fpm \
 	php5-curl \
@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 	graphicsmagick \
 	imagemagick \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Putting everything in place
 RUN rm -rf /etc/nginx/sites-enabled/* \
@@ -33,7 +33,7 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& chown -R www-data:www-data /var/www
 
 ## Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
+RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
 
 COPY assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY assets/nginx/nginx.conf /etc/nginx/nginx.conf
