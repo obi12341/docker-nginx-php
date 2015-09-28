@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
 	php5-memcached \
 	php5-memcache \
 	php5-cli \
+	php-apc \
 	supervisor \
 	git \
 	wget \
