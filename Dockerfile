@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 	php5-curl \
 	php5-gd \
 	php5-imagick \
-	php5-mysqlnd \
+	php5-mysql \
 	php5-memcached \
 	php5-memcache \
 	php5-cli \
