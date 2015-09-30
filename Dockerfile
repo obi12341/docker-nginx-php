@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
 	php5-cli \
 	php5-apcu \
 	php5-redis \
+	php5-mcrypt \
 	supervisor \
 	git \
 	wget \
