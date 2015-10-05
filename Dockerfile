@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
 	imagemagick \
 	openssh-client \
 	ssmtp \
-	mailtuils \
+	mailtutils \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
