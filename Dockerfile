@@ -26,6 +26,8 @@ RUN apt-get update && apt-get install -y \
 	graphicsmagick \
 	imagemagick \
 	openssh-client \
+	ssmtp \
+	mailtuils \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -46,7 +48,9 @@ COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 
 COPY assets/php.ini /etc/php5/fpm/php.ini
 COPY assets/php-cli.ini /etc/php5/cli/php.ini
+COPY assets/ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY start.sh /start.sh
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord"]
+CMD ["bash", "/start.sh"]
