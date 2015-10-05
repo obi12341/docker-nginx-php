@@ -1,0 +1,9 @@
+web:
+  build: .
+  environment:
+  - SSMTP_ROOT=raphael@oberdorf.net
+  - SSMTP_MAILHUB=mail.oberdorf.net:25
+  - SSMTP_AUTH_USER=raphael@oberdorf.net
+  - SSMTP_AUTH_PASS=Qo9qCrf4VjiAFQwt
+  - SSMTP_REWRITE_DOMAIN=raphael.zone
+  - SSMTP_FROM_LINE_OVERRIDE=yes
