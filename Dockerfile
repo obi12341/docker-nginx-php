@@ -49,6 +49,7 @@ COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 COPY assets/php.ini /etc/php5/fpm/php.ini
 COPY assets/php-cli.ini /etc/php5/cli/php.ini
 COPY assets/ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
 EXPOSE 80
