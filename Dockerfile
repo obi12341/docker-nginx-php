@@ -38,7 +38,7 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& mkdir -p /var/www/.composer \
 	&& chown -R www-data:www-data /var/www
 
-## Composer
+## Composer install
 RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
 
 COPY assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
