@@ -36,7 +36,8 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& mkdir -p /var/www/html \
 	&& mkdir -p /var/www/.ssh \
 	&& mkdir -p /var/www/.composer \
-	&& chown -R www-data:www-data /var/www
+	&& chown -R www-data:www-data /var/www \
+	&& locale-gen de_DE.UTF-8
 
 ## Composer install
 RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
