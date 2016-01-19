@@ -44,6 +44,7 @@ RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --file
 
 COPY assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY assets/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY assets/nginx/mime.types /etc/nginx/mime.types
 COPY assets/nginx/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 
