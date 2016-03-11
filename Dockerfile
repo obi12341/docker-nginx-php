@@ -46,6 +46,7 @@ COPY assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY assets/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY assets/nginx/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
+COPY assets/fpm/pool.d/www.conf /etc/php5/fpm/www.conf
 
 COPY assets/php.ini /etc/php5/fpm/php.ini
 COPY assets/php-cli.ini /etc/php5/cli/php.ini
