@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y \
 	openssh-client \
 	ssmtp \
 	mailutils \
+	rsyslog \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
