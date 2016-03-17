@@ -1,3 +1,3 @@
 #!/bin/bash
 bash /parent.sh
-/usr/bin/supervisord
+exec /usr/bin/supervisord
