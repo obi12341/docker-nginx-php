@@ -58,6 +58,10 @@ describe "Dockerfile" do
     it { should be_socket }
   end
 
+  describe file('/bin/composer') do
+    it { should be_file }
+  end
+
 end
 
 def wait_retry(time, increment = 1, elapsed_time = 0, &block)
