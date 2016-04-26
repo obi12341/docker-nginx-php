@@ -60,8 +60,8 @@ COPY assets/nginx/mime.types /etc/nginx/mime.types
 COPY assets/nginx/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 
-COPY assets/php.ini /etc/php7.0/fpm/php.ini
-COPY assets/php-cli.ini /etc/php7.0/cli/php.ini
+COPY assets/php.ini /etc/php/7.0/fpm/php.ini
+COPY assets/php-cli.ini /etc/php/7.0/cli/php.ini
 COPY assets/ssmtp.conf /etc/ssmtp/ssmtp.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
