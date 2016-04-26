@@ -47,7 +47,8 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& locale-gen de_DE.UTF-8 \
 	&& locale-gen en_US.UTF-8 \
 	&& ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
-	&& mkdir /run/php
+	&& mkdir /run/php \
+	&& phpdismod igbinary
 
 ## Composer install
 RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
