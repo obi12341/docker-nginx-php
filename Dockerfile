@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
 	php-redis \
 	php-mcrypt \
 	php-mbstring \
+	php-xml \
 	supervisor \
 	git \
 	wget \
