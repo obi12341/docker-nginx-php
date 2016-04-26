@@ -1,22 +1,22 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER Patrick Oberdorf <patrick@oberdorf.net>
 
 ENV TERM linux
 
 RUN apt-get update && apt-get install -y \
 	nginx \
-	php5-fpm \
-	php5-curl \
-	php5-gd \
-	php5-imagick \
-	php5-mysqlnd \
-	php5-memcached \
-	php5-memcache \
-	php5-cli \
-	php5-intl \
-	php5-apcu \
-	php5-redis \
-	php5-mcrypt \
+	php-fpm \
+	php-curl \
+	php-gd \
+	php-imagick \
+	php-mysqlnd \
+	php-memcached \
+	php-memcache \
+	php-cli \
+	php-intl \
+	php-apcu \
+	php-redis \
+	php-mcrypt \
 	supervisor \
 	git \
 	wget \
@@ -28,6 +28,9 @@ RUN apt-get update && apt-get install -y \
 	openssh-client \
 	ssmtp \
 	mailutils \
+	cron \
+	rsyslog \
+	net-tools \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -39,7 +42,8 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& chown -R www-data:www-data /var/www \
 	&& locale-gen de_DE.UTF-8 \
 	&& locale-gen en_US.UTF-8 \
-	&& ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+	&& ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
+	&& mkdir /run/php
 
 ## Composer install
 RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
@@ -50,8 +54,8 @@ COPY assets/nginx/mime.types /etc/nginx/mime.types
 COPY assets/nginx/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 
-COPY assets/php.ini /etc/php5/fpm/php.ini
-COPY assets/php-cli.ini /etc/php5/cli/php.ini
+COPY assets/php.ini /etc/php7.0/fpm/php.ini
+COPY assets/php-cli.ini /etc/php7.0/cli/php.ini
 COPY assets/ssmtp.conf /etc/ssmtp/ssmtp.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
