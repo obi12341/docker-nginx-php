@@ -4,5 +4,5 @@ test:
   stage: test
   script:
   - gem install serverspec
-  - gem isntall docker-api
+  - gem install docker-api
   - rspec Dockerfile_spec.rb
