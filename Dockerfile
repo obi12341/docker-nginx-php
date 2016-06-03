@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
 	php-mcrypt \
 	php-mbstring \
 	php-xml \
+	php-soap \
+	php-zip \
 	supervisor \
 	git \
 	wget \
