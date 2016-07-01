@@ -25,6 +25,10 @@ describe "Dockerfile" do
   describe package('supervisor') do
     it { should be_installed }
   end
+  
+  describe package('graphicsmagick') do
+    it { should be_installed }
+  end
 
   describe package('ssmtp') do
     it { should be_installed }
