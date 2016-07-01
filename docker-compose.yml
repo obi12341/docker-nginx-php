@@ -1,9 +1,4 @@
 web:
   build: .
   environment:
-  - SSMTP_ROOT=example@example.com
-  - SSMTP_MAILHUB=example.com:25
-  - SSMTP_AUTH_USER=example@example.com
-  - SSMTP_AUTH_PASS=******
-  - SSMTP_REWRITE_DOMAIN=example.com
-  - SSMTP_FROM_LINE_OVERRIDE=yes
+  - POSTFIX_HOSTNAME=test.com
