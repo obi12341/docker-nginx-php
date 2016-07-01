@@ -1,0 +1,4 @@
+web:
+  build: .
+  environment:
+  - POSTFIX_HOSTNAME=test.com
