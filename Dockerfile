@@ -1,6 +1,7 @@
 FROM ubuntu:xenial
 MAINTAINER Patrick Oberdorf <patrick@oberdorf.net>
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 RUN apt-get update && apt-get install -y \
@@ -28,13 +29,13 @@ RUN apt-get update && apt-get install -y \
 	graphicsmagick \
 	imagemagick \
 	openssh-client \
-	ssmtp \
 	mailutils \
 	cron \
 	rsyslog \
 	net-tools \
 	sudo \
 	zip \
+	postfix \
 	unzip \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -59,10 +60,11 @@ COPY assets/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY assets/nginx/mime.types /etc/nginx/mime.types
 COPY assets/nginx/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
+COPY assets/postfix/main.cf /etc/postfix/main.cf
+COPY assets/postfix/postfix-wrapper.sh /postfix-wrapper.sh
 
 COPY assets/php.ini /etc/php/7.0/fpm/php.ini
 COPY assets/php-cli.ini /etc/php/7.0/cli/php.ini
-COPY assets/ssmtp.conf /etc/ssmtp/ssmtp.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
