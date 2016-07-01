@@ -26,7 +26,7 @@ describe "Dockerfile" do
     it { should be_installed }
   end
 
-  describe package('ssmtp') do
+  describe package('postfix') do
     it { should be_installed }
   end
 
