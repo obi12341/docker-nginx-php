@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y \
 	php-mcrypt \
 	php-mbstring \
 	php-xml \
+	php-soap \
+	php-zip \
 	supervisor \
 	git \
 	wget \
@@ -43,6 +45,7 @@ RUN apt-get update && apt-get install -y \
 ## Putting everything in place
 RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& mkdir -p /var/www/html \
+	&& rm -f /var/www/html/* \
 	&& mkdir -p /var/www/.ssh \
 	&& mkdir -p /var/www/.composer \
 	&& chown -R www-data:www-data /var/www \
