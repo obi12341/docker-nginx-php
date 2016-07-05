@@ -68,6 +68,7 @@ COPY assets/postfix/postfix-wrapper.sh /postfix-wrapper.sh
 
 COPY assets/php.ini /etc/php/7.0/fpm/php.ini
 COPY assets/php-cli.ini /etc/php/7.0/cli/php.ini
+COPY assets/pool.d/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
