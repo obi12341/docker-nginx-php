@@ -55,6 +55,7 @@ COPY assets/postfix/postfix-wrapper.sh /postfix-wrapper.sh
 
 COPY assets/php.ini /etc/php5/fpm/php.ini
 COPY assets/php-cli.ini /etc/php5/cli/php.ini
+COPY assets/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
