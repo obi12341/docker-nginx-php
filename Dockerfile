@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
 	php-xml \
 	php-soap \
 	php-zip \
+	php-sqlite3 \
 	supervisor \
 	git \
 	wget \
