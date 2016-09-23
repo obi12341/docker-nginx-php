@@ -1,8 +1,8 @@
-image: ruby:2.3
-
-test:
-  stage: test
+build_image:
+  image: docker:git
+  services:
+  - docker:dind
   script:
-  - gem install serverspec
-  - gem install docker-api
-  - rspec Dockerfile_spec.rb
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN git.contair.org:5005
+    - docker build -t git.contair.org:5005/docker-container/nginx-php .
+    - docker push git.contair.org:5005/docker-container/nginx-php
