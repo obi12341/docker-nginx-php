@@ -4,7 +4,12 @@ MAINTAINER Patrick Oberdorf <patrick@oberdorf.net>
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+	&& apt-get install -y apt-transport-https \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68576280 \
+	&& echo 'deb https://deb.nodesource.com/node_6.x xenial main' > /etc/apt/sources.list.d/nodesource.list \
+	&& apt-get update \
+	&& apt-get install -y \
 	nginx \
 	php-fpm \
 	php-curl \
@@ -40,6 +45,7 @@ RUN apt-get update && apt-get install -y \
 	zip \
 	postfix \
 	unzip \
+	nodejs \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
