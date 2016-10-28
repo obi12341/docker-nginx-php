@@ -54,6 +54,8 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& locale-gen en_US.UTF-8 \
 	&& ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
 	&& mkdir /run/php \
+	&& ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log \
 	&& phpdismod igbinary
 
 ## Composer install
