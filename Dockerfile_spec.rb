@@ -3,11 +3,7 @@ require "docker"
 
 describe "Dockerfile" do
   before(:all) do
-    if ENV['IMAGEID']
-      image = Docker::Image.get(ENV['IMAGEID'])
-    else
-      image = Docker::Image.build_from_dir('.')
-    end
+    image = Docker::Image.get(ENV['IMAGEID'])
 
     set :os, family: :debian
     set :backend, :docker
