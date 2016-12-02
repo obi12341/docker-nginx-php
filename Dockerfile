@@ -63,6 +63,10 @@ COPY assets/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
+## Tests
+RUN nginx -t
+RUN php5-fpm -t
+
 EXPOSE 80
 
 CMD ["bash", "/start.sh"]
