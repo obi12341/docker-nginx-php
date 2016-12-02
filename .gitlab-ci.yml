@@ -1,6 +1,13 @@
 image: docker:latest
+services:
+- docker:dind
+
+stages:
+- build
+- release
 
 variables:
+  DOCKER_DRIVER: overlay
   CONTAINER_BUILD_IMAGE: registry.contair.org/nginx-php:${CI_BUILD_REF}
   CONTAINER_RELEASE_IMAGE: registry.contair.org/nginx-php:php5.5
 
@@ -11,6 +18,15 @@ build:
   stage: build
   script:
     - docker build --pull --no-cache -t ${CONTAINER_BUILD_IMAGE} .
+    - docker push ${CONTAINER_BUILD_IMAGE}
+    - echo "Successfull pushed image ${CONTAINER_BUILD_IMAGE}"
+
+release-image:
+  stage: release
+  script:
+    - docker pull ${CONTAINER_BUILD_IMAGE}
     - docker tag ${CONTAINER_BUILD_IMAGE} ${CONTAINER_RELEASE_IMAGE}
     - docker push ${CONTAINER_RELEASE_IMAGE}
     - echo "Successfull pushed image ${CONTAINER_RELEASE_IMAGE}"
+  only:
+    - master
