@@ -28,8 +28,8 @@ test:
     - apk add --no-cache ruby build-base ruby-dev
     - gem install --no-ri --no-rdoc serverspec docker-api
     - docker pull ${CONTAINER_BUILD_IMAGE}
-    - IMAGEID=`docker images -q ${CONTAINER_RELEASE_IMAGE}`
-    - docker images -q ${CONTAINER_RELEASE_IMAGE}
+    - IMAGEID=`docker images -q ${CONTAINER_BUILD_IMAGE}`
+    - docker images -q ${CONTAINER_BUILD_IMAGE}
     - echo $IMAGEID
     - rspec Dockerfile_spec.rb
     
