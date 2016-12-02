@@ -1,8 +1,16 @@
-build_image:
-  image: docker:git
-  services:
-  - docker:dind
+image: docker:latest
+
+variables:
+  CONTAINER_BUILD_IMAGE: registry.contair.org/nginx-php:${CI_BUILD_REF}
+  CONTAINER_RELEASE_IMAGE: registry.contair.org/nginx-php:php5.5
+
+before_script:
+  - docker login --username=${REGISTRY_USERNAME} --password=${REGISTRY_PASSWORD} registry.contair.org
+
+build:
+  stage: build
   script:
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN git.contair.org:5005
-    - docker build -t git.contair.org:5005/docker-container/nginx-php .
-    - docker push git.contair.org:5005/docker-container/nginx-php
+    - docker build --pull --no-cache -t ${CONTAINER_BUILD_IMAGE} .
+    - docker tag ${CONTAINER_BUILD_IMAGE} ${CONTAINER_RELEASE_IMAGE}
+    - docker push ${CONTAINER_RELEASE_IMAGE}
+
