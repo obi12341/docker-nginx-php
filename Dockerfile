@@ -81,6 +81,10 @@ COPY assets/pool.d/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
+## Tests
+RUN nginx -t
+RUN php-fpm7.0 -t
+
 EXPOSE 80
 
 CMD ["bash", "/start.sh"]
