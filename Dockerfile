@@ -17,7 +17,6 @@ RUN apt-get update \
 	php-imagick \
 	php-mysqlnd \
 	php-memcached \
-	php-memcache \
 	php-cli \
 	php-intl \
 	php-apcu \
