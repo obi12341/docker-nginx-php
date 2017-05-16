@@ -21,6 +21,7 @@ RUN apt-get update \
 	php5-apcu \
 	php5-redis \
 	php5-mcrypt \
+	libssh2-php \
 	supervisor \
 	git \
 	wget \
