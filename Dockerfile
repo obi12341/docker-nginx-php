@@ -33,6 +33,9 @@ RUN apt-get update \
 	openssh-client \
 	mailutils \
 	postfix \
+	gifsicle \
+	jpegoptim \
+	optipng \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
