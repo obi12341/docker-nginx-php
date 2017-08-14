@@ -47,6 +47,9 @@ RUN apt-get update \
 	unzip \
 	nodejs \
 	locales \
+	gifsicle \
+	jpegoptim \
+	optipng \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
