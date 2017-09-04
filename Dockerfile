@@ -9,7 +9,7 @@ RUN apt-get update \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68576280 \
 	&& echo 'deb https://deb.nodesource.com/node_6.x xenial main' > /etc/apt/sources.list.d/nodesource.list \
 	&& apt-get update \
-	&& apt-get install -y \
+	&& apt-get install -y --no-install-recommends \
 	nginx \
 	php-fpm \
 	php-curl \
