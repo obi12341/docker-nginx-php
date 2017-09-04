@@ -27,6 +27,7 @@ RUN apt-get update \
 	php-soap \
 	php-zip \
 	php-sqlite3 \
+	php-ssh2 \
 	supervisor \
 	git \
 	wget \
@@ -46,6 +47,9 @@ RUN apt-get update \
 	unzip \
 	nodejs \
 	locales \
+	gifsicle \
+	jpegoptim \
+	optipng \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
