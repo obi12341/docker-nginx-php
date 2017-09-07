@@ -36,6 +36,7 @@ RUN apt-get update \
 	mysql-client \
 	graphicsmagick \
 	imagemagick \
+	ghostscript \
 	openssh-client \
 	mailutils \
 	cron \
