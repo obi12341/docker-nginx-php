@@ -47,6 +47,8 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& chown -R www-data:www-data /var/www \
 	&& locale-gen de_DE.UTF-8 \
 	&& locale-gen en_US.UTF-8 \
+	&& ln -sf /dev/stdout /var/log/nginx/access.log \
+	&& ln -sf /dev/stderr /var/log/nginx/error.log \
 	&& ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 ## Composer install
