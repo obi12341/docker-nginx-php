@@ -10,7 +10,7 @@ stages:
 variables:
   DOCKER_DRIVER: overlay
   CONTAINER_BUILD_IMAGE: registry.contair.org/nginx-php:${CI_BUILD_REF}
-  CONTAINER_RELEASE_IMAGE: registry.contair.org/nginx-php:php7.0
+  CONTAINER_RELEASE_IMAGE: registry.contair.org/nginx-php:php7.2
 
 before_script:
   - docker login --username=${REGISTRY_USERNAME} --password=${REGISTRY_PASSWORD} registry.contair.org
@@ -39,4 +39,4 @@ release-image:
     - docker push ${CONTAINER_RELEASE_IMAGE}
     - echo "Successfull pushed image ${CONTAINER_RELEASE_IMAGE}"
   only:
-    - php7.0
+    - php7.2

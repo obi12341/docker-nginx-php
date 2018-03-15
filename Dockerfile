@@ -1,13 +1,13 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Patrick Oberdorf <patrick@oberdorf.net>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 RUN apt-get update \
-	&& apt-get install -y apt-transport-https \
+	&& apt-get install -y apt-transport-https ca-certificates \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68576280 \
-	&& echo 'deb https://deb.nodesource.com/node_6.x xenial main' > /etc/apt/sources.list.d/nodesource.list \
+	&& echo 'deb https://deb.nodesource.com/node_6.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	nginx \
@@ -21,7 +21,6 @@ RUN apt-get update \
 	php-intl \
 	php-apcu \
 	php-redis \
-	php-mcrypt \
 	php-mbstring \
 	php-xml \
 	php-soap \
@@ -67,8 +66,7 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
 	&& mkdir /run/php \
 	&& ln -sf /dev/stdout /var/log/nginx/access.log \
-	&& ln -sf /dev/stderr /var/log/nginx/error.log \
-	&& phpdismod igbinary
+	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
 ## Composer install
 RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
@@ -81,15 +79,15 @@ COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 COPY assets/postfix/main.cf /etc/postfix/main.cf
 COPY assets/postfix/postfix-wrapper.sh /postfix-wrapper.sh
 
-COPY assets/php.ini /etc/php/7.0/fpm/php.ini
-COPY assets/php-cli.ini /etc/php/7.0/cli/php.ini
-COPY assets/pool.d/www.conf /etc/php/7.0/fpm/pool.d/www.conf
+COPY assets/php.ini /etc/php/7.2/fpm/php.ini
+COPY assets/php-cli.ini /etc/php/7.2/cli/php.ini
+COPY assets/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
 ## Tests
 RUN nginx -t
-RUN php-fpm7.0 -t
+RUN php-fpm7.2 -t
 
 EXPOSE 80
 
