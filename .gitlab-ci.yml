@@ -29,4 +29,4 @@ release-image:
     - docker push ${CONTAINER_RELEASE_IMAGE}
     - echo "Successfull pushed image ${CONTAINER_RELEASE_IMAGE}"
   only:
-    - legacy
+    - php5.3
