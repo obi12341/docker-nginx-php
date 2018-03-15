@@ -8,7 +8,6 @@ stages:
 - release
 
 variables:
-  DOCKER_DRIVER: overlay
   CONTAINER_BUILD_IMAGE: registry.contair.org/nginx-php:${CI_BUILD_REF}
   CONTAINER_RELEASE_IMAGE: registry.contair.org/nginx-php:php7.0
 
