@@ -36,6 +36,7 @@ RUN apt-get update \
 	gifsicle \
 	jpegoptim \
 	optipng \
+	patch \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
