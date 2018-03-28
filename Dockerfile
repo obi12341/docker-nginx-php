@@ -51,6 +51,7 @@ RUN apt-get update \
 	jpegoptim \
 	optipng \
 	rsync \
+	patch \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
