@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 RUN apt-get update \
-	&& apt-get install -y apt-transport-https ca-certificates \
+	&& apt-get install -y apt-transport-https ca-certificates gpg \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68576280 \
 	&& echo 'deb https://deb.nodesource.com/node_6.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
 	&& apt-get update \
@@ -46,6 +46,7 @@ RUN apt-get update \
 	postfix \
 	unzip \
 	nodejs \
+	npm \
 	locales \
 	gifsicle \
 	jpegoptim \
