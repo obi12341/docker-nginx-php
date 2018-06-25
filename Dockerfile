@@ -70,9 +70,6 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-## Composer install
-RUN curl -sS http://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer && chmod +x /bin/composer
-
 COPY assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY assets/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY assets/nginx/mime.types /etc/nginx/mime.types
@@ -86,6 +83,8 @@ COPY assets/php-cli.ini /etc/php/7.2/cli/php.ini
 COPY assets/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
+
+COPY --from=composer:1.6 /usr/bin/composer /usr/bin/composer
 
 ## Tests
 RUN nginx -t
