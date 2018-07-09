@@ -54,7 +54,7 @@ describe "Dockerfile" do
     it { should be_socket }
   end
 
-  describe file('/bin/composer') do
+  describe file('/usr/bin/composer') do
     it { should be_file }
   end
 
