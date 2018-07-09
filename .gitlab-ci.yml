@@ -10,9 +10,11 @@ stages:
 variables:
   CONTAINER_BUILD_IMAGE: registry.contair.org/nginx-php:${CI_BUILD_REF}
   CONTAINER_RELEASE_IMAGE: registry.contair.org/nginx-php:php7.2
+  CONTAINER_MOBI_RELEASE_IMAGE: registry.mobilistics.de/nginx-php:php7.2
 
 before_script:
   - docker login --username=${REGISTRY_USERNAME} --password=${REGISTRY_PASSWORD} registry.contair.org
+  - docker login --username=${REGISTRY_MOBI_USERNAME} --password=${REGISTRY_MOBI_PASSWORD} registry.mobilistics.de
 
 build:
   stage: build
@@ -36,7 +38,9 @@ release-image:
   script:
     - docker pull ${CONTAINER_BUILD_IMAGE}
     - docker tag ${CONTAINER_BUILD_IMAGE} ${CONTAINER_RELEASE_IMAGE}
+    - docker tag ${CONTAINER_RELEASE_IMAGE} ${CONTAINER_MOBI_RELEASE_IMAGE}
     - docker push ${CONTAINER_RELEASE_IMAGE}
+    - docker push ${CONTAINER_MOBI_RELEASE_IMAGE}
     - echo "Successfull pushed image ${CONTAINER_RELEASE_IMAGE}"
   only:
     - php7.2
