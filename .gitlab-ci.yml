@@ -28,7 +28,6 @@ release-image:
   script:
     - docker pull ${CONTAINER_BUILD_IMAGE}
     - docker tag ${CONTAINER_BUILD_IMAGE} ${CONTAINER_RELEASE_IMAGE}
-    - docker tag ${CONTAINER_RELEASE_IMAGE} ${CONTAINER_MOBI_RELEASE_IMAGE}
     - docker push ${CONTAINER_RELEASE_IMAGE}
     - echo "Successfull pushed image ${CONTAINER_RELEASE_IMAGE}"
   only:
