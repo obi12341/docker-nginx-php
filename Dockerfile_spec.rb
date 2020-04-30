@@ -14,7 +14,7 @@ describe "Dockerfile" do
     it { should be_installed }
   end
 
-  describe package('php7.2-fpm') do
+  describe package('php7.4-fpm') do
     it { should be_installed }
   end
 
@@ -50,7 +50,7 @@ describe "Dockerfile" do
     end
   end
 
-  describe file('/run/php/php7.2-fpm.sock') do
+  describe file('/run/php/php7.4-fpm.sock') do
     it { should be_socket }
   end
 

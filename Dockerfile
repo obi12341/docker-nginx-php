@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 MAINTAINER Patrick Oberdorf <patrick@oberdorf.net>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -66,7 +66,6 @@ RUN rm -rf /etc/nginx/sites-enabled/* \
 	&& locale-gen de_DE.UTF-8 \
 	&& locale-gen en_US.UTF-8 \
 	&& ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
-	&& mkdir /run/php \
 	&& ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
@@ -78,9 +77,9 @@ COPY assets/nginx/fastcgi_params /etc/nginx/fastcgi_params
 COPY assets/postfix/main.cf /etc/postfix/main.cf
 COPY assets/postfix/postfix-wrapper.sh /postfix-wrapper.sh
 
-COPY assets/php.ini /etc/php/7.2/fpm/php.ini
-COPY assets/php-cli.ini /etc/php/7.2/cli/php.ini
-COPY assets/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf
+COPY assets/php.ini /etc/php/7.4/fpm/php.ini
+COPY assets/php-cli.ini /etc/php/7.4/cli/php.ini
+COPY assets/pool.d/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
@@ -88,7 +87,7 @@ COPY --from=composer:1.9 /usr/bin/composer /usr/bin/composer
 
 ## Tests
 RUN nginx -t
-RUN php-fpm7.2 -t
+RUN php-fpm7.4 -t
 
 EXPOSE 80
 
