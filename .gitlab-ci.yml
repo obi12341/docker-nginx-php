@@ -1,6 +1,6 @@
 image: docker:latest
 services:
-- docker:18.09-dind
+- docker:dind
 
 stages:
 - build
