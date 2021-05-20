@@ -83,7 +83,7 @@ COPY assets/pool.d/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY parent.sh /parent.sh
 COPY start.sh /start.sh
 
-COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
 ## Tests
 RUN nginx -t
